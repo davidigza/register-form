@@ -1,186 +1,193 @@
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-button/paper-button.html">
-
 <dom-module id="register-form">
     <template>
-    <style>
-      :host {
-        position: absolute;
-        height: 100vh;
-        left:0;
-        right: 0;
-        display: block;
-        background: #000;
-        overflow: hidden;
-        transform: translateY(100%);
-        transition: transform 225ms ease-in;
-        z-index: 3;
-        padding: 24px;
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
-      }
-
-      header {
-          padding-bottom: 8px;
-      }
-      header h1{
-        font-family: VarelaRound-Regular;
-        font-size: 12px;
-        color: #FFB601;
-        letter-spacing: 1px;
-        line-height: 15px;
-        text-transform: uppercase;
-      }
-
-      main {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        position: relative;
-      }
-
-      main div {
-          display: flex;
-      }
-
-      label {
-        font-family: VarelaRound-Regular;
-        font-size: 11px;
-        color: #868588;
-        letter-spacing: 1px;
-        line-height: 11px; 
-        text-transform: uppercase;
-        margin-top: 25px;
-      }
-     
-
-    paper-input.login {
-        --paper-input-container:{
+        <style>
+        :host {
+            position: absolute;
+            height: 100vh;
+            left: 0;
+            right: 0;
+            display: block;
+            background: #000;
+            overflow: hidden;
+            transform: translateY(100%);
+            transition: transform 225ms ease-in;
+            z-index: 3;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+        
+        header {
+            padding-bottom: 8px;
+        }
+        
+        header h1 {
+            font-family: VarelaRound-Regular;
+            font-size: 12px;
+            color: #FFB601;
+            letter-spacing: 1px;
+            line-height: 15px;
+            text-transform: uppercase;
+        }
+        
+        main {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            position: relative;
+        }
+        
+        main div {
+            display: flex;
+        }
+        
+        label {
+            font-family: VarelaRound-Regular;
+            font-size: 11px;
+            color: #868588;
+            letter-spacing: 1px;
+            line-height: 11px;
+            text-transform: uppercase;
+            margin-top: 25px;
+        }
+        
+        paper-input.login {
+            --paper-input-container: {
+                font-family: VarelaRound-Regular;
+                font-size: 16px;
+                color: rgba(255, 255, 255, 0.48);
+                letter-spacing: 1px;
+                line-height: 16px;
+                margin-left: 2px;
+            }
+            --paper-input-container-underline: {
+                display: none;
+            }
+            --paper-input-container-underline-focus: {
+                color: #FFF;
+            }
+            --paper-input-container-focus-color: #FFF;
+            --paper-input-container-invalid-color: #FF007F;
+            --paper-input-container-input-color: #FFF;
+        }
+        
+        paper-button[disabled] {
+            flex: 1;
+            height: 48px;
+            opacity: 0.95;
+            background: #25202B;
+            border-radius: 100px;
             font-family: VarelaRound-Regular;
             font-size: 16px;
-            color: rgba(255,255,255,0.48);
+            color: #868588;
             letter-spacing: 1px;
-            line-height: 16px;
-            margin-left: 2px;
-            }
-         --paper-input-container-underline:{
-            display: none;
+            text-transform: capitalize;
         }
-        --paper-input-container-underline-focus: {
-            color: #FFF;
-        }
-        --paper-input-container-focus-color: #FFF;
-        --paper-input-container-invalid-color: #FF007F;
-        --paper-input-container-input-color: #FFF;
         
-    }
-
-    paper-button[disabled] {
-        flex: 1;
-        height: 48px;
-        opacity: 0.95;
-        background: #25202B;
-        border-radius: 100px;
-        font-family: VarelaRound-Regular;
-        font-size: 16px;
-        color: #868588;
-        letter-spacing: 1px;
-        text-transform: capitalize;
-    }
-
-    paper-button {
-        flex: 1;
-        height: 48px;
-        opacity: 0.95;
-        background: rgba(0,133,255,0.96);
-        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50), 4px 4px 8px 0 rgba(0,0,0,0.72);
-        border-radius: 100px;
-        font-family: VarelaRound-Regular;
-        font-size: 16px;
-        color: #12092F;
-        letter-spacing: 1px;
-        text-transform: capitalize;
+        paper-button {
+            flex: 1;
+            height: 48px;
+            opacity: 0.95;
+            background: rgba(0, 133, 255, 0.96);
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.50), 4px 4px 8px 0 rgba(0, 0, 0, 0.72);
+            border-radius: 100px;
+            font-family: VarelaRound-Regular;
+            font-size: 16px;
+            color: #12092F;
+            letter-spacing: 1px;
+            text-transform: capitalize;
             position: absolute;
-    bottom: 10px;
-    right: 0;
-    left: 0;
-    }
-
-      .close {
-        position: absolute;
-        top: 18px;
-        right: 14px;
-        color: #868588;
-      }
-
-    </style>
-    <header>
-        <h1>registro</h1>
-    </header>
-     <main>
-        <label for="user">Nombre de Usuario</label>
-        <paper-input class="login" placeholder="Identificacion" type="email" noLabelFloat="true" name="user" always-float-label value="{{user}}"></paper-input>
-        <label for="user">Correo/ Em@il</label>
-        <paper-input  class="login" placeholder="Escribe tu Correo Electronico"  noLabelFloat type="email" always-float-label value="{{email}}"></paper-input>
-        <paper-input  class="login" placeholder="Repite tu Correo Electronico"  noLabelFloat type="email" always-float-label value="{{emailDup}}"></paper-input>
-        <label for="user">Contraseña</label>
-        <paper-input  class="login" placeholder="Escribe Contraseña"  noLabelFloat type="password" always-float-label value="{{password}}"></paper-input>
-        <paper-input  class="login" placeholder="Repite Contraseña"  noLabelFloat type="password" always-float-label value="{{passwordDup}}"></paper-input>
-        <div>
-            <paper-button class="doLogin" on-tap="showForm" disabled>Registrarse</paper-button>
-        </div>
-     </main>
-     <paper-icon-button class="close" icon="my-icons:close" on-tap="closeForm" ></paper-icon-button>
-  </template>
-
+            bottom: 10px;
+            right: 0;
+            left: 0;
+        }
+        
+        .close {
+            position: absolute;
+            top: 18px;
+            right: 14px;
+            color: #868588;
+        }
+        </style>
+        <header>
+            <h1>registro</h1>
+        </header>
+        <main>
+            <label for="user">Nombre de Usuario</label>
+            <paper-input class="login" placeholder="Identificacion" type="email" noLabelFloat="true" name="user" always-float-label value="{{user}}"></paper-input>
+            <label for="user">Correo/ Em@il</label>
+            <paper-input class="login" placeholder="Escribe tu Correo Electronico" noLabelFloat type="email" always-float-label value="{{email}}"></paper-input>
+            <paper-input class="login" placeholder="Repite tu Correo Electronico" noLabelFloat type="email" always-float-label value="{{emailDup}}"></paper-input>
+            <label for="user">Contraseña</label>
+            <paper-input class="login" placeholder="Escribe Contraseña" noLabelFloat type="password" always-float-label value="{{password}}"></paper-input>
+            <paper-input class="login" placeholder="Repite Contraseña" noLabelFloat type="password" always-float-label value="{{passwordDup}}"></paper-input>
+            <div>
+                <paper-button class="doLogin" on-tap="doResgister" disabled>Registrarse</paper-button>
+            </div>
+        </main>
+        <paper-icon-button class="close" icon="my-icons:close" on-tap="closeForm"></paper-icon-button>
+    </template>
     <script>
-        Polymer({
+    Polymer({
 
-            is: 'register-form',
+        is: 'register-form',
 
-            properties: {
-                user: {
-                    type: String,
-                    observer: 'checkCredentials'
-                },
-                email: {
-                    type: String,
-                    observer: 'checkCredentials'
-                },
-                password: {
-                    type: String,
-                    observer: 'checkCredentials'
-                },
-                emailDup: {
-                    type: String,
-                    observer: 'checkCredentials'
-                },
-                passwordDup: {
-                    type: String,
-                    observer: 'checkCredentials'
-                }
+        properties: {
+            user: {
+                type: String,
+                observer: 'checkCredentials'
             },
-
-            get login() {
-                return this.root.querySelector('.doLogin') || this.querySelector('.doLogin');
+            email: {
+                type: String
             },
+            password: {
+                type: String
+            },
+            emailDup: {
+                type: String,
+                observer: 'checkCredentials'
+            },
+            passwordDup: {
+                type: String,
+                observer: 'checkCredentials'
+            }
+        },
 
-            checkCredentials: function() {
-                var obj = this.login;;
-                if (this.user !== undefined && this.password !== undefined && this.user !== '' && this.password !== '') {
+        get login() {
+            return this.root.querySelector('.doLogin') || this.querySelector('.doLogin');
+        },
+
+        checkCredentials: function() {
+            var obj = this.login;
+            if (this.user !== undefined && this.emailDup !== undefined && this.user !== '' && this.emailDup !== '' && this.passwordDup !== undefined && this.passwordDup !== '') {
+
+                if (this.email === this.emailDup || this.password === this.passwordDup) {
                     if (obj.hasAttribute('disabled')) {
                         obj.removeAttribute('disabled');
                     }
                 } else {
                     obj.setAttribute('disabled', true);
                 }
-            },
-
-            closeForm: function() {
-                this.style.transform = 'translateY(100%)';
             }
+        },
 
-        });
+        closeForm: function() {
+            this.classList.remove('register');
+        },
+
+        doResgister: function() {
+            var user = {
+                'mail': this.email,
+                'pass': this.password
+            }
+            this.fire('doRegister', user);
+        }
+
+
+
+    });
     </script>
 </dom-module>
